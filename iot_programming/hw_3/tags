@@ -1,0 +1,66 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUF_SIZE	chat_client.c	/^#define BUF_SIZE /;"	d	file:
+BUF_SIZE	chat_client_2.c	/^#define BUF_SIZE /;"	d	file:
+BUF_SIZE	chat_server.c	/^#define BUF_SIZE /;"	d	file:
+BUF_SIZE	echo_client.c	/^#define BUF_SIZE /;"	d	file:
+BUF_SIZE	echo_server.c	/^#define BUF_SIZE /;"	d	file:
+HEADER	chat_client_2.c	/^}HEADER;$/;"	t	typeref:struct:header	file:
+Size	chat_client.c	/^    uint16_t Size;$/;"	m	struct:smsg	file:
+Size	chat_server.c	/^    uint16_t Size;$/;"	m	struct:smsg	file:
+Thread_main	chat_client.c	/^void *Thread_main(void *arg)$/;"	f
+Type	chat_client.c	/^    char Type;$/;"	m	struct:smsg	file:
+Type	chat_server.c	/^    char Type;$/;"	m	struct:smsg	file:
+c_addr	chat_server.c	/^    struct sockaddr_in s_addr, c_addr;$/;"	m	struct:server	typeref:struct:server::	file:
+checkHeadPointer	chat_server.c	/^void checkHeadPointer(int *socket){$/;"	f
+cin_addr	chat_server.c	/^    struct in_addr cin_addr;$/;"	m	struct:client	typeref:struct:client::in_addr	file:
+clearData	chat_server.c	/^void clearData(){$/;"	f
+client	chat_server.c	/^struct client{$/;"	s	file:
+client_main	chat_server.c	/^void *client_main(void* arg){$/;"	f
+client_number	chat_server.c	/^    int client_number;$/;"	m	struct:server	file:
+client_s	chat_server.c	/^    int server_s, client_s;$/;"	m	struct:server	file:
+createSock	chat_server.c	/^int createSock(char *argv){$/;"	f
+data	chat_server.c	/^    char data[BUF_SIZE];$/;"	m	struct:smsg	file:
+deleteClient	chat_server.c	/^void deleteClient(int *sock){$/;"	f
+escape	chat_client.c	/^char escape[] = "\/q\\n";$/;"	v
+escape	chat_server.c	/^char escape[]="\/q";$/;"	v
+escape	echo_client.c	/^char escape[] = "exit\\n";$/;"	v
+escape	echo_server.c	/^char escape[]="exit\\n";$/;"	v
+fd	chat_server.c	/^    int fd;$/;"	m	struct:client	file:
+head	chat_server.c	/^    struct client *head;$/;"	m	struct:server	typeref:struct:server::client	file:
+head_pointer	chat_server.c	/^    struct client *head_pointer;$/;"	m	struct:server	typeref:struct:server::client	file:
+header	chat_client_2.c	/^typedef struct header{$/;"	s	file:
+insertClient	chat_client.c	/^void insertClient(int *sockfd, struct smsg* msg, char *name){$/;"	f
+insertClient	chat_server.c	/^void insertClient(void *arg){$/;"	f
+len	chat_client_2.c	/^    uint16_t len;$/;"	m	struct:header	file:
+len_inet	chat_server.c	/^    unsigned int sin_size, len_inet;$/;"	m	struct:server	file:
+main	chat_client.c	/^int main(int argc, char* argv[]){$/;"	f
+main	chat_client_2.c	/^int main(int argc, char* argv[]){$/;"	f
+main	chat_server.c	/^int main(int argc, char *argv[]){$/;"	f
+main	echo_client.c	/^int main(int argc, char *argv[])$/;"	f
+main	echo_server.c	/^int main(int argc, char *argv[]){$/;"	f
+msg	chat_server.c	/^    struct smsg msg;$/;"	m	struct:server	typeref:struct:server::smsg	file:
+mutex	chat_server.c	/^pthread_mutex_t mutex;$/;"	v
+mutex	echo_server.c	/^pthread_mutex_t mutex;$/;"	v
+name	chat_server.c	/^    char name[10];$/;"	m	struct:client	file:
+next	chat_server.c	/^    struct client *next;$/;"	m	struct:client	typeref:struct:client::client	file:
+num_client	echo_server.c	/^int num_client=0;$/;"	v
+prev	chat_server.c	/^    struct client *prev;$/;"	m	struct:client	typeref:struct:client::client	file:
+recvClientmsg	chat_server.c	/^int recvClientmsg(void *arg){$/;"	f
+s	chat_server.c	/^struct server s;$/;"	v	typeref:struct:server
+s_addr	chat_server.c	/^    struct sockaddr_in s_addr, c_addr;$/;"	m	struct:server	typeref:struct:server::sockaddr_in	file:
+sendAllClient	chat_server.c	/^void sendAllClient(void *arg){$/;"	f
+server	chat_server.c	/^struct server{$/;"	s	file:
+server_s	chat_server.c	/^    int server_s, client_s;$/;"	m	struct:server	file:
+sin_size	chat_server.c	/^    unsigned int sin_size, len_inet;$/;"	m	struct:server	file:
+size	chat_server.c	/^    int size;$/;"	m	struct:server	file:
+smsg	chat_client.c	/^struct smsg{$/;"	s	file:
+smsg	chat_server.c	/^struct smsg{$/;"	s	file:
+thread_main	echo_server.c	/^void *thread_main(void* arg){$/;"	f
+thread_send	chat_client_2.c	/^void *thread_send(void *arg)$/;"	f
+thread_send	echo_client.c	/^void *thread_send(void * arg){$/;"	f
+type	chat_client_2.c	/^    char type;$/;"	m	struct:header	file:

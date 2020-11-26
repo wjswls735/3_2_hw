@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Rotate	P4_20150327.c	/^int Rotate(int num){$/;"	f
+RotateBlock	P4_20150327.c	/^void RotateBlock(struct player *p){$/;"	f
+X_MAX	P4_20150327.c	/^#define X_MAX /;"	d	file:
+Y_MAX	P4_20150327.c	/^#define Y_MAX /;"	d	file:
+accept	P4_20150327.c	/^    bool accept;$/;"	m	struct:player	file:
+clearPBlock	P4_20150327.c	/^void clearPBlock(struct player *p){$/;"	f
+drawBoard	P4_20150327.c	/^void drawBoard(){$/;"	f
+drawPBlock	P4_20150327.c	/^int drawPBlock(struct player *p){$/;"	f
+enableEndGame	P4_20150327.c	/^void enableEndGame(struct player *p){$/;"	f
+getCoordinate	P4_20150327.c	/^void getCoordinate(struct player *p){$/;"	f
+initBoard	P4_20150327.c	/^void initBoard(){$/;"	f
+initPlayer	P4_20150327.c	/^void initPlayer(struct player *O){$/;"	f
+insertBlock	P4_20150327.c	/^int insertBlock(struct player *p){$/;"	f
+insertPBlock	P4_20150327.c	/^int insertPBlock(struct player *p, int args, ...){$/;"	f
+map	P4_20150327.c	/^char map[X_MAX][Y_MAX];$/;"	v
+my_char	P4_20150327.c	/^    char my_char;$/;"	m	struct:player	file:
+my_turn	P4_20150327.c	/^    bool my_turn;$/;"	m	struct:player	file:
+name	P4_20150327.c	/^    char name;$/;"	m	struct:player	file:
+nextPlayer	P4_20150327.c	/^void nextPlayer(struct player *A, struct player *B){$/;"	f
+nowPlayer	P4_20150327.c	/^void *nowPlayer(struct player *A, struct player *B){$/;"	f
+p_block	P4_20150327.c	/^    char p_block[9];$/;"	m	struct:player	file:
+player	P4_20150327.c	/^struct player{$/;"	s	file:
+printPBlock	P4_20150327.c	/^void printPBlock(struct player *p){$/;"	f
+total_accept	P4_20150327.c	/^    bool total_accept;$/;"	m	struct:player	file:
+win_flag	P4_20150327.c	/^    bool win_flag;$/;"	m	struct:player	file:
+xy	P4_20150327.c	/^    char xy[4];$/;"	m	struct:player	file:

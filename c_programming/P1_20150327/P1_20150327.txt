@@ -1,0 +1,106 @@
+사칙연산 계산기를 구현하기위해서는 
+여러가지 요구들을 만족해야한다. 
+
+여러가지 만족들중에서 
+가장 첫 번째는 기능을 나누는 연산을 포함한다. 
+
+프로그램이 시작되면, 사용할 기능 (1 - 일반 연산, 2 - 확장 연산) 을 입력받은조건으로
+
+scanf를 통해서 입력을 받는다. (아래는 사용법이다.)
+    int type;
+    printf("Enter the calculator mode (1:Normal, 2: Extended):");
+    scanf("%d", &type);
+
+그 이후에는 type에 의해서 나눠진 기능을 각각 구현해야한다. 
+하지만 1 , 2 모두 연산이라는 함수는 모두 수행해야함으로 코드를 간편하게 하기 위해서
+operation함수를 만든다. 
+
+operation함수의 인자 값으로는 연산자, 연산에 필요한 숫자를 입력받는다 .
+아래는 operation의 함수 구현이다.
+
+#define ERR -2147483644
+int operation(char o, int a, int b){
+    int answer;
+    switch(o){
+            case '+': 
+                answer=a+b;
+                break;
+            case '-':
+                answer=a-b;
+                break;
+            case '*':
+                answer=a*b;
+                break;
+            case '/':
+                if(b==0){
+                    printf("cannot be divided by Zero\n");
+                    answer=ERR;
+                    return answer;
+                }
+                else{
+                    answer=a/b;
+                    break;
+                }
+            default : 
+                printf("unknow operator\n");
+                break;
+        }
+    return answer;
+}
+0으로 나눴을 경우 오류를 출력해야함으로 ERR을 설정해놓아서 오류처리를 해놓았다.
+operation 함수는 switch문을 통해서 연산자의 case를 나눠서 수행했으며, 연산자 +, *, -, / 의 수행을 할 수 있게
+해놓았다.
+
+이제 메인에서 type에 따른 방법 두 가지를 구현을 해야한다.
+
+기본적인 일반 연산의 경우 operation함수를 한번만 쓰는 구조이기 때문에 scanf로 각각의 수와 연산자를 입력받고
+출력하면 완료가된다.
+(아래는 일반 연산의 경우 코드이다.)
+    if(type==1){
+        int a, b;
+        char o;
+        int answer=0;
+        printf("Put two integers : ");
+        scanf("%d, %d", &a, &b);
+        printf("Put the operator : ");
+        scanf(" %c", &o);
+        answer=operation(o, a, b);
+        if(answer == ERR) return 0;
+        printf("The result is %d\n", answer);
+        return 0;
+        
+문제의 경우는 확장 연산의 경우이다. 
+확장 연산의 경우 연산자가 두개가 들어가며 연산의 우선순위도 존재하기 때문에 그 부분에 맞춰서 먼저 연산을 하거나 나중에 연산을 해야한다.
+그래서 이문제를 조건문을 사용하여 구분하고자한다.
+두 연산자가 우선순위가 높은 연산자라면 순서대로 진행해도 상관이 없지만 
+문제가 되는 경우는 앞에 사용한 연산자가 우선순위가 낮고 뒤에 온 연산자가 우선순위가 높은 경우이다.
+이 경우에서는 operation함수를 미리 구현해놓앗기 때문에 뒤에서 먼저 실행시킨뒤 
+앞에 연산을 하면된다. 
+그래서 조건문을 사용해서 아래와 같이 구현한다면 우선순위가 높은 연산자가 뒤에 오더라도 
+먼저 우선순위가 높은 연산자를 사용해 연산을 하기 때문에 문제가 생기지 않는다.
+(아래는 확장 연산의 경우 코드이다.)
+    if(type==2){
+        int a[3];
+        char o[2];
+        int integer_temp;
+        int answer=0;
+        printf("Put three integers : ");
+        scanf("%d, %d, %d", &a[0], &a[1], &a[2]);
+        printf("Put two operator : ");
+        scanf(" %c, %c", &o[0], &o[1]);
+        if((o[1] == '*' || o[1] =='/') && (o[0]=='+' || o[0]=='-')){
+            integer_temp=operation( o[1], a[1], a[2]);
+            answer=operation( o[0], a[0], integer_temp);
+        }
+        else{
+            integer_temp=operation(o[0], a[0], a[1]);
+            answer=operation(o[1], integer_temp, a[2]);
+        }
+
+        printf("The result is %d\n", answer);
+        return 0;
+    }
+
+이로써 P1의 구현은 완성되었고 결과값 역시 제대로 나오는 것을 볼 수 있다.
+
+

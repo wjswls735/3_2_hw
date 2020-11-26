@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ConnClient	new_server.c	/^int ConnClient(struct simple_server *s, simple_server *c){$/;"	f
+CreateSocket	new_server.c	/^int CreateSocket(struct simple_server *s, char *argc){$/;"	f
+addr_len	new_server.c	/^    socklen_t addr_len;$/;"	m	struct:simple_server	file:
+connHandler	new_server.c	/^void connHandler(){$/;"	f
+errorSendPage	new_server.c	/^int errorSendPage(struct simple_server *c, char *file_name){$/;"	f
+len	new_server.c	/^    int len;$/;"	m	struct:simple_server	file:
+main	http_client.c	/^int main(int argv, char* argc[]){$/;"	f
+main	http_server.c	/^int main()$/;"	f
+main	new_server.c	/^int main(int argv, char *argc[])$/;"	f
+readRequest	new_server.c	/^int readRequest(struct simple_server *s, struct simple_server *c, char *file_name){$/;"	f
+s	new_server.c	/^    int s; \/\/server socket$/;"	m	struct:simple_server	file:
+s_addr	new_server.c	/^    struct sockaddr_in s_addr;$/;"	m	struct:simple_server	typeref:struct:simple_server::sockaddr_in	file:
+sendData	new_server.c	/^int sendData(struct simple_server *c, char *file_name){$/;"	f
+simple_server	new_server.c	/^typedef struct simple_server {$/;"	s	file:
+simple_server	new_server.c	/^} simple_server;$/;"	t	typeref:struct:simple_server	file:
+zombie_handler	http_server.c	/^void zombie_handler(){$/;"	f
+zombie_handler	new_server.c	/^void zombie_handler(){$/;"	f
