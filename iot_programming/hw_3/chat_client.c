@@ -25,7 +25,7 @@ void *Thread_main(void *arg)
 
     while((size = read(0, buf, BUF_SIZE)) > 0){
         buf[size - 1] = '\0';
-        if(strncmp(buf, escape, 4) == 0){
+        if(strcmp(buf, "/q") == 0){
             printf("exit\n");
             msg.Size = htons(0);
             msg.Type = 'q';
@@ -102,6 +102,10 @@ int main(int argc, char* argv[]){
     while(1){
         int size = recv(sockfd, &msg.Size, 2, 0);
         
+        if(size ==0){
+            printf("Disconnected\n");
+            break;
+        }
         if(size == -1){
             perror("Error\n");
             return 0;

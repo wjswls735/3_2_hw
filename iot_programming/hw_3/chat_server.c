@@ -152,12 +152,22 @@ void insertClient(void *arg){
 
 void deleteClient(int *sock){
     if(s.client_number>1){
+        if(s.head_pointer == s.head){
+            s.head = s.head->next;
+        }
         s.head_pointer->prev->next = s.head_pointer->next;
         s.head_pointer->next->prev = s.head_pointer->prev;
+         
         free((s.head_pointer));
+        printf("\nfree  s.head_pointer = %#x\n", s.head_pointer);
+        s.head_pointer=s.head;
     }
     else{
+        if(s.head_pointer == s.head){
+            s.head = NULL;
+        }
         free(s.head_pointer);
+        s.head_pointer=NULL;
     }
     s.client_number-=1;
     close(*sock);
