@@ -104,22 +104,26 @@ void sendAllClient(void *arg){
     unsigned int len;
     char temp[100];
     
+    pthread_mutex_lock(&mutex);
     strncpy(temp, s.head_pointer->name, strlen(s.head_pointer->name));
     temp[strlen(s.head_pointer->name)]=':';
     temp[strlen(s.head_pointer->name)+1]=' ';
     temp[strlen(s.head_pointer->name)+2]='\0';
     strcat(temp, s.msg.data);
     printf("s.head_pointer->name = %s\n",s.head_pointer->name);
-    len = strlen(temp);
+    len = htons(strlen(temp));
 
     for(int i=0; i<s.client_number; i++){ 
         s.size=send(s.head_pointer->fd, &(len), 2, 0);
+        printf("len = %d \n", len);
         s.size=send(s.head_pointer->fd, &(s.msg.Type), 1, 0);
+        printf("s.msg.Type = %c \n", s.msg.Type);
         s.size=send(s.head_pointer->fd, temp, strlen(temp), 0);
         printf("\nTo %s, socket_number = %d, msg = %s \n", s.head_pointer->name, s.head_pointer->fd, temp);
        
         s.head_pointer=s.head_pointer->next;
     }
+    pthread_mutex_unlock(&mutex);
 
     for(int i=0; i<99; i++){
         temp[i]='\0';
@@ -134,6 +138,8 @@ void insertClient(void *arg){
     strncpy(cli->name, s.msg.data, s.msg.Size);
     cli->cin_addr=s.c_addr.sin_addr;
     cli->fd = *(int*)arg;
+
+    pthread_mutex_lock(&mutex); 
     if(s.client_number==0){
         s.head = cli;
         s.head_pointer=cli;
@@ -147,10 +153,12 @@ void insertClient(void *arg){
         cli->next->prev = cli;
     }
     s.client_number+=1;
+    pthread_mutex_unlock(&mutex); 
    
 }
 
 void deleteClient(int *sock){
+    pthread_mutex_lock(&mutex);
     if(s.client_number>1){
         if(s.head_pointer == s.head){
             s.head = s.head->next;
@@ -159,7 +167,6 @@ void deleteClient(int *sock){
         s.head_pointer->next->prev = s.head_pointer->prev;
          
         free((s.head_pointer));
-        printf("\nfree  s.head_pointer = %#x\n", s.head_pointer);
         s.head_pointer=s.head;
     }
     else{
@@ -191,7 +198,6 @@ void *client_main(void* arg){
     free(arg);
 
     while(1){
-        pthread_mutex_lock(&mutex);
         if(recvClientmsg(&socket)){
             checkHeadPointer(&socket); 
             if(s.msg.Type=='m') sendAllClient(&socket);
@@ -202,7 +208,6 @@ void *client_main(void* arg){
                 break;
             }
         }
-        pthread_mutex_unlock(&mutex);
     }
     return NULL;
 }
